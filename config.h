@@ -19,8 +19,8 @@ extern Client client;
 char startpage[MAX_SETTING_SIZE]      = "http://www.vimprobable.org/";
 char useragent[MAX_SETTING_SIZE]      = "Vimprobable2/" VERSION;
 char acceptlanguage[MAX_SETTING_SIZE] = "";
-static const gboolean enablePlugins     = TRUE; /* TRUE keeps plugins enabled */
-static const gboolean enableJava        = TRUE; /* FALSE disables Java applets */
+static const gboolean enablePlugins     = FALSE; /* TRUE keeps plugins enabled */
+static const gboolean enableJava        = FALSE; /* FALSE disables Java applets */
 static const gboolean enablePagecache   = FALSE; /* TRUE turns on the page cache. */
 static gboolean escape_input_on_load    = TRUE; /* TRUE will disable automatic focusing of input fields via Javascript*/
 char temp_dir[MAX_SETTING_SIZE]         = "/tmp"; /* location of temporary files, default will be overridden if TEMPDIR is set */
@@ -69,14 +69,14 @@ static const char progressborderright   = ']';
  */
 static URIHandler uri_handlers[] = {
     { "mailto:",          "x-terminal-emulator -e mutt %s" },
-    { "vimprobableedit:", "x-terminal-emulator -e vi %s" },
+    { "vimprobableedit:", "x-terminal-emulator -e vim %s" },
     { "ftp://",           "x-terminal-emulator -e wget ftp://%s" },
 };
 
 /* cookies */
 #define             ENABLE_COOKIE_SUPPORT
 #define             COOKIES_STORAGE_FILENAME    "%s/vimprobable/cookies", client.config.config_base
-#define             COOKIES_STORAGE_READONLY    FALSE   /* if TRUE new cookies will be lost if you quit */
+#define             COOKIES_STORAGE_READONLY    TRUE   /* if TRUE new cookies will be lost if you quit */
 
 /* downloads directory */
 #define             DOWNLOADS_PATH              "%s", getenv("HOME")
@@ -93,7 +93,7 @@ static URIHandler uri_handlers[] = {
 
 /* ssl */
 static gboolean strict_ssl              = TRUE; /* FALSE will accept any SSL certificate at face value */
-static char ca_bundle[MAX_SETTING_SIZE] = "/etc/ssl/certs/ca-certificates.crt";
+static char ca_bundle[MAX_SETTING_SIZE] = "/etc/ssl/certs/ca-bundle.crt";
 
 /* proxy */
 static const gboolean use_proxy         = TRUE; /* TRUE if you're going to use a proxy (whose address
@@ -110,14 +110,21 @@ gboolean complete_case_sensitive        = TRUE;
 
 /* search engines */
 static Searchengine searchengines[] = {
-    { "i",          "http://ixquick.com/do/metasearch.pl?query=%s" },
+    { "dd",         "https://duckduckgo.com/?q=%s" },
+    { "dd",         "https://duckduckgo.com/?q=%s" },
+    { "d",          "https://duckduckgo.com/html/?q=%s" },
+    { "dic",        "http://dictionary.reference.com/browse/%s" },
+    { "g",          "https://encrypted.google.com/#bav=on.2&q=%s" },
+    { "is",         "http://ixquick.com/do/metasearch.pl?query=%s" },
+    { "ii",         "http://ixquick.com/do/metasearch.pl?cat=pics?query=%s" },
+    { "iv",         "http://ixquick.com/do/metasearch.pl?cat=videos?query=%s" },
+    { "leo",        "http://dict.leo.org/#/search=%s" },
+    { "mw",         "http://www.merriam-webster.com/dictionary/%s" },
+    { "ths",        "http://thesaurus.com/browse/%s" },
     { "w",          "https://secure.wikimedia.org/wikipedia/en/w/index.php?title=Special%%3ASearch&search=%s&go=Go" },
-    { "wd",         "https://secure.wikimedia.org/wikipedia/de/w/index.php?title=Special%%3ASearch&search=%s&go=Go" },
-    { "d",          "https://duckduckgo.com/?q=%s&t=vimprobable" },
-    { "dd",         "https://duckduckgo.com/html/?q=%s&t=vimprobable" },
 };
 
-static char defaultsearch[MAX_SETTING_SIZE] = "i";
+static char defaultsearch[MAX_SETTING_SIZE] = "d";
 
 /* command mapping */
 Command commands[COMMANDSIZE] = {
