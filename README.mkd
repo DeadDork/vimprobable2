@@ -1,0 +1,11 @@
+Vimprobable
+===========
+
+A Vim-like web browser that is simple, but not too simple.
+
+A word from the local forker
+----------------------------
+
+I decided to fork the entire project and put it on GitHub. It's primarily a dorky way to save my Vimprobable2 preferences and keep on top of the changes in the code base.
+
+It's public, and anyone and everyone is encouraged to try it out.
