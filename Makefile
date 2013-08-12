@@ -27,7 +27,7 @@ CFLAGS += -g -ggdb -ansi -Wstrict-prototypes
 CFLAGS += -Wno-long-long -Wall -Wmissing-declarations
 endif
 
-PREFIX ?= /usr/local
+PREFIX ?= $(HOME)/.local
 BINDIR ?= $(PREFIX)/bin
 MANDIR ?= $(PREFIX)/share/man
 # Mode bits for normal not executable files
