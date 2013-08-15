@@ -79,7 +79,7 @@ static URIHandler uri_handlers[] = {
 #define             COOKIES_STORAGE_READONLY    TRUE   /* if TRUE new cookies will be lost if you quit */
 
 /* downloads directory */
-#define             DOWNLOADS_PATH              "%s", getenv("HOME")
+#define             DOWNLOADS_PATH              "%s/Downloads/vimprobable", getenv("HOME")
 
 /* font size */
 #define             DEFAULT_FONT_SIZE           12
